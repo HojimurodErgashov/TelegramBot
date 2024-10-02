@@ -2,7 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 
-namespace TelegramBot.Services;
+namespace TelegramBot.Bot.Services;
 
 public class BotBackgrounService : BackgroundService
 {
@@ -14,11 +14,11 @@ public class BotBackgrounService : BackgroundService
         ILogger<BotBackgrounService> logger,
         TelegramBotClient client,
         IUpdateHandler updateHandler)
-        {
-            _logger = logger;
-            _client = client;
-            _handler = updateHandler;
-        }
+    {
+        _logger = logger;
+        _client = client;
+        _handler = updateHandler;
+    }
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -32,7 +32,7 @@ public class BotBackgrounService : BackgroundService
             {
                 ThrowPendingUpdates = true
             },
-            stoppingToken   
+            stoppingToken
         );
 
     }
