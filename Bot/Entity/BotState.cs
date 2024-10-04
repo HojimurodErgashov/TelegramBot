@@ -6,6 +6,12 @@
         FullName,
         PhoneNumber,
         Code,
-        Service
+        Service,
+        Choose,
+        Category,
+        About,
+        Arxiv , 
+        Settings,
+        Orqaga
     }
 }

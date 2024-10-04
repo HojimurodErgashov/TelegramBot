@@ -10,6 +10,9 @@ using TelegramBot.Users.Interfaces;
 using TelegramBot.Users.Services;
 using TelegramBot.Repository;
 using TelegramBot.Users.Entity;
+using TelegramBot.Categories.Interfaces;
+using TelegramBot.Categories.Services;
+using TelegramBot.Categories.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 var token = builder.Configuration.GetValue("BotToken" , string.Empty);
@@ -26,7 +29,9 @@ builder.Services.AddSingleton<IUpdateHandler , BotUpdateHandler>();
 builder.Services.AddHostedService<BotBackgrounService>();
 builder.Services.AddScoped<IReplyMarkUpService, ReplyMarkUpService>();
 builder.Services.AddScoped<IGenericRepository<User> , GenericRepository<User>>();
-builder.Services.AddScoped<IUserService, UserServices>();
+builder.Services.AddScoped<IGenericRepository<Category> , GenericRepository<Category>>();
+builder.Services.AddScoped<IProductService, UserServices>();
+builder.Services.AddScoped<ICateogryService, CategoryService>();
 
 builder.Services.AddLocalization();
 
