@@ -19,6 +19,7 @@ public partial class BotUpdateHandler : IUpdateHandler
     private  IReplyMarkUpService _replyMarkUpService;
     private  IProductService _userService;
     private ICateogryService _categoryService;
+    private IProductService _productService;
 
     public BotUpdateHandler(ILogger<BotUpdateHandler> logger ,
         IServiceScopeFactory scopeFactory)
@@ -39,6 +40,7 @@ public partial class BotUpdateHandler : IUpdateHandler
         using var scope = _scopeFactory.CreateScope();
         _userService = scope.ServiceProvider.GetRequiredService<IProductService>();
         _categoryService = scope.ServiceProvider.GetRequiredService<ICateogryService>();
+        _productService = scope.ServiceProvider.GetRequiredService<IProductService>();
         _replyMarkUpService = scope.ServiceProvider.GetRequiredService<IReplyMarkUpService>();
 
 
