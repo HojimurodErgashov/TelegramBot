@@ -6,6 +6,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using TelegramBot.Bot.Resources;
 using TelegramBot.Bot.Services.MarkupService;
+using TelegramBot.Categories.Interfaces;
 using TelegramBot.Users.Interfaces;
 
 namespace TelegramBot.Services;
@@ -16,7 +17,8 @@ public partial class BotUpdateHandler : IUpdateHandler
     private readonly IServiceScopeFactory _scopeFactory;
     private  IStringLocalizer _localizer;
     private  IReplyMarkUpService _replyMarkUpService;
-    private  IUserService _userService;
+    private  IProductService _userService;
+    private ICateogryService _categoryService;
 
     public BotUpdateHandler(ILogger<BotUpdateHandler> logger ,
         IServiceScopeFactory scopeFactory)
@@ -35,8 +37,11 @@ public partial class BotUpdateHandler : IUpdateHandler
     {
 
         using var scope = _scopeFactory.CreateScope();
-        _userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+        _userService = scope.ServiceProvider.GetRequiredService<IProductService>();
+        _categoryService = scope.ServiceProvider.GetRequiredService<ICateogryService>();
         _replyMarkUpService = scope.ServiceProvider.GetRequiredService<IReplyMarkUpService>();
+
+
 
         var culture = await GetCultureForUser(update);
         CultureInfo.CurrentCulture = culture;

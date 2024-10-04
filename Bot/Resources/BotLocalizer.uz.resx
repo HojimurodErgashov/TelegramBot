@@ -136,7 +136,16 @@ Bizning hizmatlardan foydalanishingiz mumkin!</value>
   <data name="GetPhoneNumber" xml:space="preserve">
     <value>Ilitimos telefon raqamingizni kiriting:</value>
   </data>
-  <data name="BadResponse" xml:space="preserve">
-    <value>Siz noto'g'ri ma'lumot kiritdingiz!Balki siz avvalroq ro'yhatdan o'tib bo'lgandirsiz!</value>
+  <data name="AlreadyRegistered" xml:space="preserve">
+    <value>Siz allaqchon qo'yhatdan o'tib bo'lgansiz!</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Buyurtma berish!Buyurtmalarim!Izoh qoldirish!Biz haqimizda!Sozlamalar</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Orqaga</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>Categoriyani tanlang:</value>
   </data>
 </root>

@@ -4,8 +4,8 @@ namespace TelegramBot.Bot.Services.MarkupService
 {
     public interface IReplyMarkUpService
     {
-        public Task<ReplyKeyboardMarkup> GenerateKeyboardMarkupForLanguageAsync();
-        public Task<ReplyKeyboardMarkup> GenerateKeyboardMarkupForServicesAsync(string[] buttons);
-
+        public ReplyKeyboardMarkup GenerateKeyboardMarkupForLanguage();
+        public ReplyKeyboardMarkup GenerateKeyboardMarkupForServices(string[] buttons);
+        public ReplyKeyboardMarkup GenerateMarkupForCategories(string[] categories);
     }
 }

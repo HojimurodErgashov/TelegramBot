@@ -5,7 +5,7 @@ using TelegramBot.Users.Interfaces;
 
 namespace TelegramBot.Users.Services
 {
-    public class UserServices : IUserService
+    public class UserServices : IProductService
     {
             private readonly IGenericRepository<User> _userManager;
 

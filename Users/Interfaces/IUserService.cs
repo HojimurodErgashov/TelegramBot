@@ -4,7 +4,7 @@ using TelegramBot.Users.Entity;
 
 namespace TelegramBot.Users.Interfaces
 {
-    public interface IUserService
+    public interface IProductService
     {
         ValueTask<User> CreateUserAsync(User user);
         ValueTask<User> GetUserAsync(long? Id);

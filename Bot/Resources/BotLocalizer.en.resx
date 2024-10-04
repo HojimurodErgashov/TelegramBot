@@ -135,7 +135,16 @@
   <data name="GetPhoneNumber" xml:space="preserve">
     <value>Please Enter Your Phone number:</value>
   </data>
-  <data name="BadResponse" xml:space="preserve">
-    <value>You have entered incorrect information! Maybe You registered.</value>
+  <data name="AlreadyRegistered" xml:space="preserve">
+    <value>You are already registered</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Placing an order!History of Cart!Comments!About us!Settings</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="categories" xml:space="preserve">
+    <value>Select category:</value>
   </data>
 </root>

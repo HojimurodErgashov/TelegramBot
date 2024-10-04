@@ -4,7 +4,7 @@ namespace TelegramBot.Bot.Services.MarkupService
 {
     public class ReplyMarkUpService : IReplyMarkUpService
     {
-        public async Task<ReplyKeyboardMarkup> GenerateKeyboardMarkupForLanguageAsync()
+        public ReplyKeyboardMarkup GenerateKeyboardMarkupForLanguage()
         {
             var replyKeyboardMarkup = new ReplyKeyboardMarkup(new[]
             {
@@ -20,7 +20,7 @@ namespace TelegramBot.Bot.Services.MarkupService
             return replyKeyboardMarkup;
         }
 
-        public async Task<ReplyKeyboardMarkup> GenerateKeyboardMarkupForServicesAsync(string[] buttons)
+        public ReplyKeyboardMarkup GenerateKeyboardMarkupForServices(string[] buttons)
         {
             var keyboardButtons = buttons.Select(button => new KeyboardButton(button)).ToArray();
 
@@ -34,6 +34,33 @@ namespace TelegramBot.Bot.Services.MarkupService
                 ResizeKeyboard = true // Tugmachalarni o'lchamlarini o'zgartirish
             };
             return keyboard;
+        }
+
+        public ReplyKeyboardMarkup GenerateMarkupForCategories(string[] categories) 
+        {
+            var keyboard = new List<List<KeyboardButton>>();
+            keyboard.Add(new List<KeyboardButton> { new KeyboardButton(categories[0]) });
+            var remainingWords = categories.Skip(1).ToArray();
+
+            for (int i = 0; i < remainingWords.Length; i += 2)
+            {
+                var row = new List<KeyboardButton>
+                {
+                    new KeyboardButton(remainingWords[i])
+                };
+
+                if (i + 1 < remainingWords.Length)
+                {
+                    row.Add(new KeyboardButton(remainingWords[i + 1]));
+                }
+
+                keyboard.Add(row);
+            }
+
+            return new ReplyKeyboardMarkup(keyboard)
+            {
+                ResizeKeyboard = true
+            };
         }
     }
 }
