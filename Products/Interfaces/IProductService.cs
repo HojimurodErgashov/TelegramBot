@@ -10,5 +10,6 @@ namespace TelegramBot.Products.Interfaces
         ValueTask<Product> UpdateProduct(Product product);
         ValueTask<bool> DeleteProductAsync(long Id);
         ValueTask<IQueryable<Product>> GetAllProductAsync(Expression<Func<Product, bool>> expression, string[] includes = null, bool isTracking = true);
+        ValueTask<IQueryable<Product>> GetAllProductsByCategoryIdAsync(long Id);
     }
 }
