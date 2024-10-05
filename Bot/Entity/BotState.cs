@@ -12,6 +12,8 @@
         About,
         Arxiv , 
         Settings,
-        Orqaga
+        Orqaga,
+        Products,
+        SelectCount
     }
 }

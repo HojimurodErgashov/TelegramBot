@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Telegram.Bot;
@@ -200,7 +201,7 @@ public partial class BotUpdateHandler
                     {
                         user.CurrentState = BotState.Category;
 
-                        categories = (await _categoryService.GetAllCategoryAsync(x => true, null, true)).ToList();
+                        categories = (await _categoryService.GetAllCategoryAsync(x => true, new string[] { "Products" }, true)).ToList();
 
                         string[] strings = new string[categories.Count + 1];
                         strings[0] = _localizer["Orqaga"].ToString();
@@ -236,11 +237,26 @@ public partial class BotUpdateHandler
                 ////Category oynasidan category tanlashga javon  Category name keladi o'sha name bo'yicha bizga o'sha categorydagi productlar qaytib keladi.
                 else
                 {
-                    long id = GetcategoryByName(categories , user.LanguageCode ,message.Text);
-                    List<Product> products = new List<Product>();
-                    products = 
+                    List<Product>? products = new List<Product>();
+                    Category  category = categories.FirstOrDefault(c => IsUzbek(user) ?c.Name_uz.Equals(message.Text) : c.Name_en.Equals(message.Text));
+                    products = category.Products;
+                    arr = new string[products.Count + 1];
+                    arr[0] = IsUzbek(userEntity) ? "Orqaga" : "Back";
+                    long i = 1;
+                    foreach (Product product in products) 
+                    {
+                        arr[i++] = IsUzbek(user) ? product.Name_uz : product.Name_en;
+                    }
 
-                    
+                    user.CurrentState = BotState.Products;
+                    await client.SendTextMessageAsync(
+                            chatId: message.Chat.Id,
+                            text: "Product tanlang:",
+                            replyToMessageId: message.MessageId,
+                            replyMarkup: _replyMarkUpService.GenerateKeyboardMarkupForServices(arr),
+                            cancellationToken: token);
+                    break;
+
                 }
                 
                 break;
@@ -262,25 +278,15 @@ public partial class BotUpdateHandler
         CultureInfo.CurrentUICulture = culture;
     }
 
-    private long GetcategoryByName(List<Category> categories , string languageCode , string name)
+    private bool IsUzbek(TelegramBot.Users.Entity.User user)
     {
-        long id = 0;
-        if (languageCode.Equals("uz-uZ"))
+        if (user.LanguageCode == "uz-Uz")
         {
-            id = categories.FirstOrDefault(p => p.Name_uz.Equals(name)).Id;
+            return true;
         }
         else
         {
-            id = categories.FirstOrDefault(p => p.Name_en.Equals(name)).Id;
-        }
-
-        if (id != 0) 
-        {
-            return id;
-        }
-        else
-        {
-            return -1;
+            return false;
         }
     }
 }

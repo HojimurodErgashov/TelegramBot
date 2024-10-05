@@ -32,6 +32,8 @@ namespace TelegramBot.Products.Service
         public async ValueTask<IQueryable<Product>> GetAllProductAsync(Expression<Func<Product, bool>> expression, string[] includes = null, bool isTracking = true)
             => _productManager.GetAllAsync(expression, includes, isTracking);
 
+        public async ValueTask<IQueryable<Product>> GetAllProductsByCategoryIdAsync(long Id)
+     => _productManager.GetAllAsync(p => p.Id == Id);
         public async ValueTask<Product> GetProductAsync(long? Id)
             => await _productManager.GetAsync(p => p.Id == Id, false, null);
 
