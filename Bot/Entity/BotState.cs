@@ -14,6 +14,7 @@
         Settings,
         Orqaga,
         Products,
-        SelectCount
+        SelectCount,
+        AboutBack
     }
 }

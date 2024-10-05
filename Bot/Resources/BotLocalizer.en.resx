@@ -147,4 +147,7 @@
   <data name="categories" xml:space="preserve">
     <value>Select category:</value>
   </data>
+  <data name="selectproduct" xml:space="preserve">
+    <value>Select product:</value>
+  </data>
 </root>

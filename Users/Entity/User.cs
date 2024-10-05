@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TelegramBot.AuditableModel;
 using TelegramBot.Bot.Entity;
+using TelegramBot.Comments.Entities;
 
 namespace TelegramBot.Users.Entity
 {
@@ -18,6 +19,7 @@ namespace TelegramBot.Users.Entity
         public BotState CurrentState { get; set; } = BotState.Start;
         public int Code { get; set; }
         public List<Role> Roles { get; set; } = new List<Role>() { Role.user};
+        public List<Comment> Comments { get; set; }
 
     }
 }
