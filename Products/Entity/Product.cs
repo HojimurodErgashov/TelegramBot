@@ -1,5 +1,5 @@
 ﻿using TelegramBot.AuditableModel;
-using TelegramBot.Modifies;
+using TelegramBot.Modifies.Entities;
 
 namespace TelegramBot.Products.Entity
 {

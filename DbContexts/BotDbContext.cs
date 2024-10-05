@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TelegramBot.Categories.Entity;
-using TelegramBot.Modifies;
 using TelegramBot.Users.Entity;
 using TelegramBot.Carts;
 using TelegramBot.Products.Entity;
+using TelegramBot.Modifies.Entities;
 
 namespace TelegramBot.BotDbCOntext
 {

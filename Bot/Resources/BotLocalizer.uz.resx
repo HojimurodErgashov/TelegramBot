@@ -148,4 +148,7 @@ Bizning hizmatlardan foydalanishingiz mumkin!</value>
   <data name="categories" xml:space="preserve">
     <value>Categoriyani tanlang:</value>
   </data>
+  <data name="selectproduct" xml:space="preserve">
+    <value>Mahsulotni tanlang:</value>
+  </data>
 </root>
